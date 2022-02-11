@@ -1,0 +1,8 @@
+:root {
+  /* Colors */
+  --main-bg-color: #333;
+  --main-color: white;
+
+  /* Sizes */
+  --navbar-height: 80px;
+}
