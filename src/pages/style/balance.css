@@ -11,5 +11,14 @@
 
 .form > input {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
+}
+
+p.alert-text {
+    font-size: 65%;
+    color: red;
+    text-align: left;
+    padding: 0;
+    margin: 0 0 8px 0;
+    width: 100%;
 }
