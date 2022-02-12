@@ -6,6 +6,7 @@ const ReactRouter = () => {
         <Routes>
             {Object.keys(routes).map((route) => (
                 <Route
+                    key={route}
                     path={routes[route].path}
                     element={routes[route].getPage()}
                 />
