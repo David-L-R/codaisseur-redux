@@ -1,14 +1,17 @@
-import { Home, About } from "../pages";
-import { Routes, Route } from "react-router-dom";
-import { routes } from "./navRoutes";
+import { Routes, Route } from 'react-router-dom'
+import { routes } from './routes'
 
 const ReactRouter = () => {
-  return (
-    <Routes>
-      <Route path={routes.home.path} element={<Home />}/>
-      <Route path={routes.about.path} element={ <About />}/ >
-    </Routes>
-  );
-};
+    return (
+        <Routes>
+            {Object.keys(routes).map((route) => (
+                <Route
+                    path={routes[route].path}
+                    element={routes[route].getPage()}
+                />
+            ))}
+        </Routes>
+    )
+}
 
-export default ReactRouter;
+export default ReactRouter

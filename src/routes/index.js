@@ -1,4 +1,4 @@
-import { routes } from "./navRoutes";
+import { routes } from "./routes";
 import ReactRouter from "./ReactRouter";
 
 export { routes };
