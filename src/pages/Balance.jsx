@@ -34,6 +34,21 @@ const Balance = () => {
         dispatch(withdraw(amount))
     }
 
+    const createRandomAlert = () => {
+        const index = Math.floor(Math.random(4))
+
+        const types = ['danger', 'warning', 'success', 'info']
+
+        const messages = ['error!', 'warning!', 'great!', 'some info']
+
+        dispatch(
+            addAlert({
+                type: types[index],
+                message: messages[index],
+            })
+        )
+    }
+
     return (
         <Page>
             <Card>
@@ -51,17 +66,7 @@ const Balance = () => {
                     >
                         Deposit
                     </button>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            dispatch(
-                                addAlert({
-                                    type: 'danger',
-                                    message: 'test error',
-                                })
-                            )
-                        }}
-                    >
+                    <button type="button" onClick={createRandomAlert}>
                         ADD ALERT
                     </button>
                 </form>
