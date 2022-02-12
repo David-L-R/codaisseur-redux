@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+
+//  REDUX
+import { useDispatch, useSelector } from 'react-redux'
+import { deposit, withdraw } from '../store/balance/actions'
+import { selectBalance } from '../store/balance/selectors'
+import { addAlert } from '../store/alert/actions'
+
+//  COMPONENTS
 import { Page } from '../components'
 import Card from '../components/card/Card'
-import { deposit } from '../store/balance/actions'
+
+//  STYLES
 import './style/balance.css'
 
 const Balance = () => {
     const dispatch = useDispatch()
-    const [balance, setBalance] = useState(0)
+    const balance = useSelector(selectBalance)
+
     const [amount, setAmount] = useState(0)
 
     const handleInput = (e) => {
@@ -18,20 +27,42 @@ const Balance = () => {
         setAmount(value > 0 ? value : 0)
     }
 
+    const handleWithdraw = () => {
+        if (balance < amount) {
+            return
+        }
+        dispatch(withdraw(amount))
+    }
+
     return (
         <Page>
             <Card>
                 <p>Balance: {balance}$</p>
                 <form className="form">
                     <input type="number" onChange={handleInput} />
+                    <button type="button" onClick={handleWithdraw}>
+                        Withdraw
+                    </button>
                     <button
                         type="button"
                         onClick={() => {
-                            console.log('dispatch')
                             dispatch(deposit(amount))
                         }}
                     >
                         Deposit
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            dispatch(
+                                addAlert({
+                                    type: 'danger',
+                                    message: 'test error',
+                                })
+                            )
+                        }}
+                    >
+                        ADD ALERT
                     </button>
                 </form>
             </Card>

@@ -1,5 +1,6 @@
 import { combineReducers, createStore } from 'redux'
 import balanceReducer from './balance/reducer'
+import alertReducer from './alert/reducer'
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__
     ? window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -8,6 +9,7 @@ const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__
 const store = createStore(
     combineReducers({
         balance: balanceReducer,
+        alerts: alertReducer,
     }),
     enhancer
 )

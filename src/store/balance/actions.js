@@ -1,8 +1,13 @@
-import { DEPOSIT } from './types'
+import { DEPOSIT, WITHDRAW } from './types'
+
+export const withdraw = (amount) => {
+    return {
+        type: WITHDRAW,
+        payload: amount,
+    }
+}
 
 export const deposit = (amount) => {
-    console.log('deposit action amount', amount)
-
     return {
         type: DEPOSIT,
         payload: amount,
