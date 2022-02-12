@@ -35,11 +35,18 @@ const Balance = () => {
     }
 
     const createRandomAlert = () => {
-        const index = Math.floor(Math.random(4))
+        const index = Math.floor(Math.random() * 4)
+
+        console.log('index', index)
 
         const types = ['danger', 'warning', 'success', 'info']
 
         const messages = ['error!', 'warning!', 'great!', 'some info']
+
+        console.log({
+            type: types[index],
+            message: messages[index],
+        })
 
         dispatch(
             addAlert({

@@ -15,7 +15,7 @@ const Page = ({ children }) => {
             <div className="content-container">{children}</div>
             <AlertContainer>
                 {alerts.map((alert) => (
-                    <Alert type={alert.type} id={alert.id}>
+                    <Alert key={alert.id} type={alert.type} id={alert.id}>
                         {alert.message}
                     </Alert>
                 ))}

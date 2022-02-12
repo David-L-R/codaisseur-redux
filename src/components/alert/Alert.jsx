@@ -5,30 +5,38 @@ import './alert.css'
 
 const Alert = ({ children, type, id }) => {
     const dispatch = useDispatch()
-    const [color, setColor] = useState('var(--primary-color)')
+    const [color, setColor] = useState()
 
     useEffect(() => {
         switch (type) {
             case 'success':
-                setColor('--success-color')
+                setColor('var(--success-color)')
                 return
             case 'warning':
-                setColor('--warning-color')
+                setColor('var(--warning-color)')
                 return
             case 'danger':
-                setColor('--danger-color')
+                setColor('var(--danger-color)')
+                return
+            case 'info':
+                setColor('var(--info-color)')
                 return
             default:
-                setColor('--info-color')
                 return
         }
     }, [type])
 
     return (
-        <div className="alert" style={{ backgroundColor: color }}>
-            <div>{children}</div>
-            <button onClick={() => dispatch(removeAlert(id))}>Remove</button>
-        </div>
+        <>
+            {color && (
+                <div className="alert" style={{ backgroundColor: color }}>
+                    <div>{children}</div>
+                    <button onClick={() => dispatch(removeAlert(id))}>
+                        Remove
+                    </button>
+                </div>
+            )}
+        </>
     )
 }
 
